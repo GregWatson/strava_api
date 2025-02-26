@@ -3,12 +3,8 @@ import StravaInfoForm from "@/components/forms/strava_info_form";
 // import { useRouter } from "next/navigation";
 
 const stravaClientID = process.env.STRAVA_CLIENT_ID as string;
-const stravaClientSecret = process.env.STRAVA_CLIENT_SECRET as string;
-//console.log("STRAVA CLIENT ID = ", stravaClientID);
-// console.log("STRAVA_CLIENT_SECRET = ", stravaClientSecret);
-// console.log("All process.env is ", process.env);
 
-export default function Home() {
+export default async function Home() {
   return (
     <div>
       <p>Test Strava API</p>
@@ -16,5 +12,3 @@ export default function Home() {
     </div>
   );
 }
-
-// <StravaInfoForm/>

@@ -22,6 +22,7 @@ export default function AuthPage() {
       <h1>username is {userName}</h1>
       <h1>Strava ID is {stravaID}</h1>
       Strava request is {request}
+      <br />
       <button
         className="rounded-md px-8 bg-blue-500"
         onClick={() => {

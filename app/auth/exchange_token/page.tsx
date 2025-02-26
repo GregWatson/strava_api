@@ -6,9 +6,8 @@ export default function ExchangeToken() {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
   const scope = searchParams.get("scope");
-  const stravaURL = "https://www.strava.com/oauth/token";
   const router = useRouter();
-  const request = `/auth/redirect?code=${code}&stravaURL=${stravaURL}`;
+  const request = `/auth/redirect?code=${code}`;
 
   return (
     <div>

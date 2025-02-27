@@ -22,12 +22,12 @@ export default function StravaInfoForm({
   return (
     <form action={getData}>
       <input
-        className=" px-8 bg-pink-800"
-        defaultValue="gwatson@gmail.com"
+        className=" px-8 bg-pink-800 text-white"
+        defaultValue="Enter your Strava username"
         name="userName"
       />
       <input type="hidden" name="clientID" value={stravaClientID} />
-
+      <br />
       <button className="rounded-md px-8 bg-blue-500" type="submit">
         Find Strava Data
       </button>

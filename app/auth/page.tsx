@@ -13,7 +13,7 @@ export default function AuthPage() {
     "?client_id=" +
     stravaID +
     "&response_type=code&redirect_uri=http://localhost:3000/auth/exchange_token" +
-    "&approval_prompt=force&scope=read";
+    "&approval_prompt=force&scope=profile:read_all";
 
   const request = url + header;
 

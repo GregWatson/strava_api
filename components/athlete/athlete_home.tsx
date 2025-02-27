@@ -1,5 +1,6 @@
 // "use client";
 // import { useRouter } from "next/navigation";
+// import { useState } from "react";
 
 export default function AthleteHome({
   expires_at,
@@ -14,6 +15,12 @@ export default function AthleteHome({
   access_token: string;
   athlete: any;
 }) {
+  const athleteInfo = Object.entries(athlete).map(([key, value]) => (
+    <div key={key}>
+      {key}: {value}
+    </div>
+  ));
+
   return (
     <div>
       <h1> Athlete Home </h1>
@@ -24,6 +31,7 @@ export default function AthleteHome({
       <p> token expires_in is {expires_in} </p>
       <p> refresh_token is {refresh_token} </p>
       <p> access_token is {access_token} </p>
+      {athleteInfo}
     </div>
   );
 }

@@ -16,21 +16,24 @@ export default function StravaInfoForm({
     router.push(`/auth?user=${userName}&clientID=${ClientID}`);
   }
 
-  // const url = "http://www.strava.com/oauth/authorize"
-  // https://www.strava.com/api/v3/athlete/activities
-
   return (
-    <form action={getData}>
-      <input
-        className=" px-8 bg-pink-800 text-white"
-        defaultValue="Enter your Strava username"
-        name="userName"
-      />
-      <input type="hidden" name="clientID" value={stravaClientID} />
-      <br />
-      <button className="rounded-md px-8 bg-blue-500" type="submit">
-        Find Strava Data
-      </button>
+    <form className="py-12" action={getData}>
+      <div className="container flex flex-col items-center justify-center mx-auto py-8">
+        Enter your Strava ID here:{" "}
+        <input
+          className=" px-8 bg-gray-800 text-white"
+          defaultValue="gwatson@gmail.com"
+          name="userName"
+        />
+        <input type="hidden" name="clientID" value={stravaClientID} />
+        <br />
+        <button
+          className="m-4 justify-center rounded-md p-2 bg-blue-500"
+          type="submit"
+        >
+          Click to Find Strava Data
+        </button>
+      </div>
     </form>
   );
 }

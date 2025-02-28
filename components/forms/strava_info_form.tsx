@@ -1,5 +1,8 @@
 "use client";
 
+// Note: this assumes that the image "btn_strava_connect_with_orange.png"
+// is in the public directory. i.e. path is public/btn_strava_connect_with_orange.png
+
 import { useRouter } from "next/navigation";
 
 export default function StravaInfoForm({
@@ -17,7 +20,8 @@ export default function StravaInfoForm({
   }
 
   return (
-    <form className="py-12" action={getData}>
+    <form className="py-6" action={getData}>
+      <br />
       <div className="container flex flex-col items-center justify-center mx-auto py-8">
         Enter your Strava ID here:{" "}
         <input
@@ -27,11 +31,8 @@ export default function StravaInfoForm({
         />
         <input type="hidden" name="clientID" value={stravaClientID} />
         <br />
-        <button
-          className="m-4 justify-center rounded-md p-2 bg-blue-500"
-          type="submit"
-        >
-          Click to Find Strava Data
+        <button type="submit">
+          <img src={"/btn_strava_connect_with_orange.png"} alt={"Use Strava"} />
         </button>
       </div>
     </form>

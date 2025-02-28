@@ -1,8 +1,13 @@
 // Must be server page to get process.env access
 import AthleteHome from "@/components/athlete/athlete_home";
 import { getDetailedAthlete } from "@/actions/get_strava_info";
+import PageHeader from "@/components/page-header";
 
-export default async function ExchangeToken(props: {
+// STrava will process the initial request to http://www.strava.com/oauth/authorize
+// and will then redirect back to this page, passing the temporary code and the
+// scope. We will then use the code to get the access token and refresh token.
+
+export default async function GetAccess(props: {
   // params: { id: string };
   searchParams: Promise<{
     code: string;
@@ -38,14 +43,14 @@ export default async function ExchangeToken(props: {
     }),
   });
 
+  // Note: the expiry info and refresh token should be stored and
+  // used to determine when to refresh the access token. See Strava API.
+
   const data = await response.json();
-  // const responseStr = JSON.stringify(data);
-  // console.log("Redirect: response is ", responseStr);
   const expires_at = data.expires_at;
   const expires_in = data.expires_in;
   const refresh_token = data.refresh_token;
   const access_token = data.access_token as string;
-  // const athlete = data.athlete;
 
   console.log(
     "Strava response:  clientID is ",
@@ -68,7 +73,8 @@ export default async function ExchangeToken(props: {
   // weight, profile_medium, profile, friend, follower}
 
   return (
-    <div>
+    <div className="container flex flex-col items-center justify-center mx-auto py-8">
+      <PageHeader title="Athlete Information from Strava" />
       {detailedAthlete && <AthleteHome detailedAthlete={detailedAthlete} />}
       {!detailedAthlete && <h1>Could not get athlete data</h1>}
     </div>

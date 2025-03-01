@@ -11,30 +11,28 @@ export default function StravaInfoForm({
   stravaClientID: string;
 }) {
   const router = useRouter();
-  console.log("StravaInfoForm STRAVA CLIENT ID = ", stravaClientID);
 
   function getData(formData: any) {
-    const userName = formData.get("userName");
-    const ClientID = formData.get("clientID");
-    router.push(`/auth?user=${userName}&clientID=${ClientID}`);
+    const url = "http://www.strava.com/oauth/authorize";
+    const header =
+      "?client_id=" +
+      stravaClientID +
+      "&response_type=code&redirect_uri=http://localhost:3000/auth" +
+      "&approval_prompt=force&scope=profile:read_all";
+
+    const request = url + header;
+    router.push(`${request}`);
   }
 
   return (
-    <form className="py-6" action={getData}>
-      <br />
-      <div className="container flex flex-col items-center justify-center mx-auto py-8">
-        Enter your Strava ID here:{" "}
-        <input
-          className=" px-8 bg-gray-800 text-white"
-          defaultValue="gwatson@gmail.com"
-          name="userName"
-        />
-        <input type="hidden" name="clientID" value={stravaClientID} />
-        <br />
-        <button type="submit">
-          <img src={"/btn_strava_connect_with_orange.png"} alt={"Use Strava"} />
-        </button>
-      </div>
+    <form
+      className="container flex flex-col items-center justify-center mx-auto py-8"
+      action={getData}
+    >
+      <input type="hidden" name="clientID" value={stravaClientID} />
+      <button type="submit">
+        <img src={"/btn_strava_connect_with_orange.png"} alt={"Use Strava"} />
+      </button>
     </form>
   );
 }

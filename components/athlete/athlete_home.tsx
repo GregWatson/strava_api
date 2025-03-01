@@ -23,15 +23,15 @@ export default function AthleteHome({
   );
 }
 
-// Strava response:  clientID is  149987  scope is  read,profile:read_all  Access_token is  7b831f99b9b8f8fd1577070c32880b708255286c
+// Strava response:  clientID is  149987  scope is  read,profile:read_all
 // get_access. detailedAthlete is  {
-//   id: 265315,
+//   id: 999999,
 //   username: null,
 //   resource_state: 3,
-//   firstname: 'Greg',
-//   lastname: 'Watson',
+//   firstname: 'xxxxxx',
+//   lastname: 'xxxxxxxx',
 //   bio: '',
-//   city: 'Palo Alto',
+//   city: 'xxxxxxxxxx',
 //   state: 'CA',
 //   country: 'United States',
 //   sex: 'M',
@@ -41,8 +41,8 @@ export default function AthleteHome({
 //   updated_at: '2025-02-16T01:05:34Z',
 //   badge_type_id: 1,
 //   weight: 86.1825,
-//   profile_medium: 'https://dgalywyr863hv.cloudfront.net/pictures/athletes/265315/83461/7/medium.jpg',
-//   profile: 'https://dgalywyr863hv.cloudfront.net/pictures/athletes/265315/83461/7/large.jpg',
+//   profile_medium: 'https://dgalywyr863hv.cloudfront.net/pictures/athletes/9999999/83461/7/medium.jpg',
+//   profile: 'https://dgalywyr863hv.cloudfront.net/pictures/athletes/9999999/83461/7/large.jpg',
 //   friend: null,
 //   follower: null,
 //   blocked: false,
@@ -67,7 +67,7 @@ export default function AthleteHome({
 //       dimensions: [Array],
 //       sport_type: 'cycling',
 //       localized_sport_type: 'Cycling',
-//       city: 'Palo Alto',
+//       city: 'Blah Blah',
 //       state: 'CA',
 //       country: 'United States',
 //       private: true,
@@ -92,7 +92,7 @@ export default function AthleteHome({
 //       dimensions: [Array],
 //       sport_type: 'cycling',
 //       localized_sport_type: 'Cycling',
-//       city: 'Palo Alto',
+//       city: 'Blah Blah',
 //       state: 'California',
 //       country: 'United States',
 //       private: false,

@@ -10,7 +10,7 @@ function PageHeader({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="w-full flex flex-col items-center justify-center bg-sky-900 py-4">
       <h1 className="text-3xl md:text-5xl font-bold text-center text-[#C15A1A] flex gap-4 items-center">
         {title}
       </h1>

@@ -2,6 +2,7 @@
 import AthleteHome from "@/components/athlete/athlete_home";
 import { getDetailedAthlete } from "@/actions/get_strava_info";
 import PageHeader from "@/components/page-header";
+import PageFooter from "@/components/page-footer";
 
 // STrava will process the initial request to http://www.strava.com/oauth/authorize
 // and will then redirect back to this page, passing the temporary code and the
@@ -73,10 +74,11 @@ export default async function GetAccess(props: {
   // weight, profile_medium, profile, friend, follower}
 
   return (
-    <div className="container flex flex-col items-center justify-center mx-auto py-8">
+    <div className="w-full bg-sky-900 container flex flex-col items-center justify-center mx-auto py-8">
       <PageHeader title="Athlete Information from Strava" />
       {detailedAthlete && <AthleteHome detailedAthlete={detailedAthlete} />}
       {!detailedAthlete && <h1>Could not get athlete data</h1>}
+      <PageFooter />
     </div>
   );
 }

@@ -74,7 +74,7 @@ export default async function GetAccess(props: {
   // weight, profile_medium, profile, friend, follower}
 
   return (
-    <div className="w-full bg-sky-900 container flex flex-col items-center justify-center mx-auto py-8">
+    <div className=" bg-sky-900 container flex flex-col items-center justify-center mx-auto">
       <PageHeader title="Athlete Information from Strava" />
       {detailedAthlete && <AthleteHome detailedAthlete={detailedAthlete} />}
       {!detailedAthlete && <h1>Could not get athlete data</h1>}

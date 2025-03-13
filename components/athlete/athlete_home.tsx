@@ -1,31 +1,17 @@
 "use client";
 // import { useRouter } from "next/navigation";
 // import { useState } from "react";
-import BikeGrid from "@/components/athlete/bike_grid";
-import { getDetailedAthlete } from "@/actions/get_strava_info";
-import { getClientCookie } from "@/components/cookies/clientCookies";
+import { BikeGrid } from "@/components/athlete/bike_grid";
+// import { getDetailedAthlete } from "@/actions/get_strava_info";
+// import { getClientCookie } from "@/components/cookies/clientCookies";
+// import { useState, useEffect } from "react";
 
-export default async function AthleteHome() {
-  const access_token = getClientCookie("access_token");
-  if (!access_token) {
-    console.error(
-      "Could not fetch athlete data because Strava access token is invalid:"
-    );
-    return null;
-  }
-  let detailedAthlete = null;
-  let bikes: string[] = [];
-
-  try {
-    detailedAthlete = await getDetailedAthlete(access_token);
-    const bikes = detailedAthlete ? detailedAthlete.bikes : [];
-  } catch (err) {
-    console.log("AthleteHome: Unable to get detailedAthlete: ", err);
-    detailedAthlete = null;
-    return <p>Unable to get Athlete details</p>;
-  }
-
-  const bikeGrid = bikes ? <BikeGrid bikes={bikes} /> : <p>No bikes found</p>;
+export default function AthleteHome({
+  detailedAthlete,
+}: {
+  detailedAthlete: any;
+}) {
+  const bikes = detailedAthlete ? detailedAthlete.bikes : [];
 
   return (
     <div>
@@ -37,7 +23,7 @@ export default async function AthleteHome() {
             {detailedAthlete.id}
           </div>
           <img src={detailedAthlete.profile} alt="Image of athlete" />
-          {bikes.length > 0 ? bikeGrid : <div>No bikes found</div>}
+          <BikeGrid bikes={bikes} />
         </div>
       )}
     </div>

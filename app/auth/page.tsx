@@ -10,7 +10,7 @@ import GoHome from "@/components/nav/go_home";
 // scope. We will then use the code to make another Strava request to
 // get the access token and refresh token as well as expiry information.
 // Once we have the tokens we save them as SERVER-SIDE cookies. Client
-// never sees the tokens.
+// never sees the private keys on the server.
 
 export default async function Auth(props: {
   // params: { id: string };

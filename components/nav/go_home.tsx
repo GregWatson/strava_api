@@ -1,6 +1,5 @@
 "use client";
 import { useRouter } from "next/navigation";
-// import { saveServerCookies } from "../cookies/serverCookies";
 import { saveClientCookies } from "../cookies/clientCookies";
 
 export default function GoHome({
@@ -28,11 +27,23 @@ export default function GoHome({
   const resultMessage = authOK ? "Saved cookies" : "Failed: Cookies not saved";
 
   return (
-    <button
-      className="border-orange-600 hover:border-orange-300 border-2 rounded-lg"
-      onClick={() => router.push(`/?isAuth=${authOK}`)}
-    >
-      {resultMessage} - click to return to Home page
-    </button>
+    <div>
+      {authOK && (
+        <button
+          className="border-orange-600 hover:border-orange-300 border-2 rounded-lg"
+          onClick={() => router.push(`/dashboard?access_token=${access_token}`)}
+        >
+          {resultMessage} - click to go to user Dashboard
+        </button>
+      )}
+      {!authOK && (
+        <button
+          className="border-red-600 hover:border-red-300 border-2 rounded-lg"
+          onClick={() => router.push("/")}
+        >
+          {resultMessage} - click to return to Home page
+        </button>
+      )}
+    </div>
   );
 }

@@ -1,17 +1,5 @@
 "use client";
-// import { useCookies } from "react-cookie";
-// import Cookies from "js-cookie";
 const Cookies = require("js-cookie");
-
-// import { getCookiePairs } from "./serverCookies";
-
-// export default async function ShowCookies() {
-//   const cookiePairs = await getCookiePairs();
-
-//   const pairs = cookiePairs.map((pair) => <li key={pair}>{pair}</li>);
-
-//   return <ul>{pairs}</ul>;
-// }
 
 const authCookieNames = [
   "scope",
@@ -24,7 +12,7 @@ const authCookieNames = [
 export function getClientCookie(name: string) {
   if (authCookieNames.includes(name)) {
     const val = Cookies.get(name);
-    console.log("getClientCookie for %s returns %s", name, val);
+    console.log("getClientCookie for %s returns %s", name, val ? val : "null");
     return val;
   } else {
     return null;
@@ -36,8 +24,8 @@ export function getClientCookiePairs() {
   authCookieNames.forEach((name) => {
     const val = Cookies.get(name);
     const saneVal =
-      name == "access_token" || name == "refresh_token"
-        ? name.length > 10
+      name === "access_token" || name === "refresh_token"
+        ? val
           ? "Valid token"
           : "Invalid token"
         : val;
@@ -52,7 +40,7 @@ export function saveClientCookies(
   expires_in: number,
   refresh_token: string,
   access_token: string
-) {
+): boolean {
   if (
     scope !== "" &&
     expires_at > 0 &&

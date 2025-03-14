@@ -57,3 +57,11 @@ export function saveClientCookies(
   }
   return false;
 }
+
+export function deleteClientCookies() {
+  Cookies.remove("expires_at");
+  Cookies.remove("expires_in");
+  Cookies.remove("scope");
+  Cookies.remove("refresh_token");
+  Cookies.remove("access_token");
+}

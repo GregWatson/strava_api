@@ -6,7 +6,7 @@
 import { useRouter } from "next/navigation";
 import { getStravaClientID } from "@/actions/server_actions";
 import { getCurrentAccessToken } from "@/actions/auth_actions";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function StravaInfoForm() {
   const router = useRouter();
@@ -14,6 +14,12 @@ export default function StravaInfoForm() {
   const [state, setState] = useState(
     access_token !== null ? "authorized" : "waitClick"
   );
+
+  useEffect(() => {
+    if (!access_token) {
+      setState("waitClick");
+    }
+  }, []);
 
   // This function asks Strava for a temporary key based on the app ID.
   // Strava will then redirect to the redirect_uri specified.
